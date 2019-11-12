@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width:600px;
+            height:500px;
+            border: 2px solid #7FFFD4;
+            text-align: center;
+            margin: auto;
+        }
+        body{
+            text-align: center;
+        }
+        button{
+            background-color: #7FFFD4;
+            color: antiquewhite;
+            width: 80px;
+            height: 50px;
+            border-radius: 10px;
+            font-size: 26px;
+
+        }
+    </style>
+    <script th:src="@{../js/jquery-1.11.0.js}"></script>
+
+</head>
+<body>
+<div><h1>学生成绩管理系统</h1></div>
+<form th:action="@{/student/studentLogin}" method="post">
+    <table>
+        <tr>
+            <td colspan="2">
+                <h1>学生登录</h1>
+            </td>
+        </tr>
+        <tr style="margin-top: -50px;">
+            <td>
+                <h2 style="float:right; ">请输入学号：</h2>
+            </td>   <td>
+            <input id="xm" type="text" name="student_id" style="float: left">
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <h2 style="float:right;">请输入姓名：</h2>
+            </td><td>
+            <input id="xh" type="text" name="student_name" style="float: left">
+        </td>
+        </tr>
+        <tr >
+            <td colspan="2">
+                <button type="submit">登录</button>
+            </td>
+        </tr>
+
+
+
+    </table>
+</form>
+
+
+</body>
+</html>

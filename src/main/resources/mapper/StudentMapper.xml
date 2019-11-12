@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.test.demo.dao.StudentDao">
+
+    <resultMap id="student" type="com.test.demo.model.Student">
+        <association property="class_name" javaType="Class" column="class_id"  select="com.test.demo.dao.ClassDao.getClassId">
+        </association>
+    </resultMap>
+
+<!---——————————————————新的分页——————————————————————————————————-->
+	<!--查询所有元素-->
+	<!--<select id="StudentList" resultMap="student">
+    select a.student_id,a.student_name,b.class_name,a.sex,a.home_add,a.telephone from student a
+    LEFT JOIN class b
+    on a.class_id=#{b.class_id}
+    </select>-->
+    <select id="StudentList" resultMap="student">
+    select * from student
+    </select>
+
+   <!-- 学生登录-->
+    <select id="studentLogin" resultType="Student">
+    select * from student where   student_name=#{student_name} and password=#{password}
+    </select>
+
+    <!--修改-->
+    <update id="studentUpdate" >
+        UPDATE student set student_name=#{student_name},sex=#{sex},home_add=#{home_add},telephone=#{telephone} where student_id=#{student_id}
+    </update>
+    <insert id="studentAdd">
+        insert into student (student_id,student_name,class_id,sex,home_add,telephone)values(#{student_id},#{student_name},#{class_id},#{sex},#{home_add},#{telephone})
+    </insert>
+
+    <!--删除-->
+    <delete id="studentDelete">
+        delete from student where student_id=#{student_id}
+    </delete>
+
+    <select id="getStudentID" resultType="Student">
+        SELECT * from student where student_id=#{student_id}
+    </select>
+
+</mapper>

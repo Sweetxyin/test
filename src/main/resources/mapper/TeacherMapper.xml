@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.test.demo.dao.TeacherDao">
+
+<!---——————————————————新的分页——————————————————————————————————-->
+	<!--查询所有元素-->
+	<select id="getTeacherList" resultType="Teacher">
+        select * from teacher
+    </select>
+    <!--教师登录-->
+    <select id="teacherLogin" resultType="Teacher">
+        select * from teacher where teacher_name=#{teacher_name} and password=#{password}
+    </select>
+    <insert id="inserTeacher">
+        insert into teacher (teacher_id,teacher_name,password)value(#{teacher_id},#{teacher_name},#{password})
+    </insert>
+    <delete id="deleteTeacher">
+        DELETE from teacher WHERE teacher_id=#{teacher_id}
+    </delete>
+    <update id="updateTeacher">
+        UPDATE teacher set teacher_id=#{teacher_id},teacher_name=#{teacher_name},password=#{password} where teacher_id=#{teacher_id}
+
+    </update>
+
+    <select id="getTeacherId" resultType="Teacher">
+        select * from teacher where teacher_id=#{teacher_id}
+    </select>
+</mapper>

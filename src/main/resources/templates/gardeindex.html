@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/bootstrap.css" th:href="@{../css/bootstrap.css}" rel="stylesheet">
+    <script th:src="@{../js/jquery-1.11.0.js}"></script>
+    <script th:src="@{../js/bootstrap.js}"></script>
+
+</head>
+<body>
+<div>
+    <form th:action="@{/gradeSearch/}+${grade.student_id}" method="post">
+       <span style=" height:40px;width: 150px;float: left;margin-top: 20px;" class="input-group-addon">学号：</span>
+        <input style=" height:40px; width: 400px; float: left;margin-top: 20px;" class="form-control"  type="number" name="student_id" >
+        <button style="float: left;margin-top: 20px;" class=" btn btn-info btn-lg" type="submit" >搜索</button>
+    </form>
+</div>
+
+<table class="table" border="1">
+    <thead>
+    <tr>
+         <th>学号</th><th>姓名</th> <th>课程</th><th>成绩</th><th>年份</th><th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="success" th:each="grade:${gradeModel.list}">
+        <td class="active" th:text="${grade.student_name.student_id}" ></td>
+        <td class="active" th:text="${grade.student_name.student_name}" ></td>
+        <td class="active" th:text="${grade.kc_name.kc_name}"></td>
+        <td class="active" th:text="${grade.grade}"></td>
+        <td class="active" th:text="${grade.year}"></td>
+        <td>
+            <button class=" btn btn-info btn-sm "><a  th:href="@{/deleteTeacher/}+${grade.grade_id}">删除</a></button>
+            <button class=" btn btn-info btn-sm "> <a th:href="@{/toUpdateTeacher/}+${grade.grade_id}">修改</a></button>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

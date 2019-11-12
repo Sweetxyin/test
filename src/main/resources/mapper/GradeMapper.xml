@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.test.demo.dao.GradeDao">
+
+    <resultMap id="grade" type="com.test.demo.model.Grade">
+        <association property="student_name" javaType="Student" column="student_id" select="com.test.demo.dao.StudentDao.getStudentID">
+        </association>
+        <association property="kc_name" javaType="Kc" column="kc_id" select="com.test.demo.dao.KcDao.getKcId">
+        </association>
+    </resultMap> 
+<!---——————————————————新的分页——————————————————————————————————-->
+    <select id="getGradeId" resultType="Grade">
+        select * from grade where grade_id=#{grade_id}
+    </select>
+    <select id="getGradeList" resultMap="grade">
+        select * from grade
+    </select>
+
+    <select id="searchGrade" resultMap="grade">
+     select * from grade where student_id=#{student_id}
+    </select>
+<!--  <select id="searchGrade" resultMap="grade"
+            parameterType="Grade">
+     select * from grade
+     <where>
+         <if test="student_id != null and student_id !=''">
+             and student_id LIKE %#{student_id}%
+         </if>
+
+     </where>
+    </select>-->
+
+
+
+
+</mapper>

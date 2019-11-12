@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/css/bootstrap.css">
+    <style>
+        body{
+            text-align: center;
+            font-size: 24px;
+        }
+        table{
+            width:600px;
+            height:500px;
+            border: 2px solid #32CD32;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script src="/static/js/jquery-1.11.0.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<form th:action="@{/student/doStudentUpdate}" method="post">
+    <input type="hidden" name="student_id" th:value="${user.student_id}" >
+    <p>姓名：</p><input type="text" name="student_name" th:value="${user.student_name}"></br>
+    <p>性别：</p><input type="text" name="sex" th:value="${user.sex}"></br>
+    <p>家庭住址：</p><input type="text" name="home_add" th:value="${user.home_add}"></br>
+    <p>电话：</p><input type="text" name="telephone" th:value="${user.telephone}"></br>
+    <input type="submit" value="提交">
+
+</form>
+
+
+
+
+
+
+</body>
+
+
+<script>
+
+</script>
+</body>
+</html>

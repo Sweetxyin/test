@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <script th:src="@{../js/jquery-1.11.0.js}"></script>
+    <style>
+        table{
+            width:600px;
+            height:500px;
+            border: 2px solid #7FFFD4;
+           text-align: center;
+            margin: auto;
+        }
+        body{
+            text-align: center;
+        }
+        a{
+            font-size: 26px;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        function xsdj() {
+            $.ajax({
+                url:'/studentlogin',
+                dataType:'json',
+                async:false,
+                type:'post',
+                data:{},
+            });
+        }
+
+    </script>
+</head>
+<body>
+<div><h1>欢迎来到学生管理系统！！！</h1></div>
+<table border="1">
+<tr>
+    <th><h1>用户选择</h1></th>
+</tr>
+    <tr>
+       <th><a th:href="@{/studentlogin}">1.学生</a></th>
+    </tr>
+    <tr>
+        <th><a th:href="@{/teacherlogin}">2.教师</a></th>
+    </tr>
+    <tr>
+        <th><a>3.管理员</a></th>
+    </tr>
+</table>
+</body>
+</html>

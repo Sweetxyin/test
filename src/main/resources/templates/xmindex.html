@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩管理系统</title>
+    <base th:href="@{/}">
+    <script th:src="@{../js/jquery-1.11.0.js}"></script>
+    <style>
+        body{
+            text-align: center;
+        }
+        body a{
+            text-decoration: none;
+            color: #000;
+        }
+        header{
+            width: auto;
+            height: 100px;
+            background-color: lightgreen;
+            color: #fff;
+        }
+        .nr{
+            width:100%;
+            margin-top: 15px;
+
+        }
+        #left{
+            width: 350px;
+            border: 2px solid #32CD32;
+            height: 655px;
+            margin-left: 10px;
+
+        }
+        #right{
+            width: 1260px;
+            border: 2px solid #32CD32;
+            height: 655px;
+            margin-left: 15px;
+        }
+        .nav-item{
+            font-size: 24px;
+
+           text-align: center;
+            margin-left: -85px;
+        }
+        .nav-item li{
+            list-style: none;
+
+        }
+        ul{
+            list-style-type: none;
+        }
+        .nav-item a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        $(function()
+        {
+            $(".yiji").on("click",function()
+            {
+                if($(this).next().css("display")=="none")
+                {
+                    $(".nav-item").children("ul").slideUp(300);
+                    $(this).next().slideDown(300);//展出
+                }
+                else
+                {
+                    $(this).next().slideUp(300);//收拢
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<header>
+    <div style="float: left"><h1>学生成绩管理系统</h1></div>
+    <div style="float: right">
+        <p>当前用户：<b th:test="${student_name}"></b></p><br>
+        <a th:href="@{/index}">退出系统</a>
+    </div>
+</header>
+<div class="nr">
+    <div id="left" style="float: left">
+     <ul th:z>
+         <li class="nav-item" th:if="${session.radio==1||session.radio==2}">
+             <div  th:if="${session.radio==1}">
+             <a class="yiji">学生管理</a>
+             <ul>
+                 <li ><a th:href="@{/student/studentList}"x target= "frame">管理</a></li>
+                 <li ><a th:href="@{/gardeindexList}"x target= "frame">查询成绩</a></li>
+             </ul>
+             </div>
+         </li>
+         <li  class="nav-item" th:if="${session.radio==1||session.radio==2}">
+             <div th:if="${session.radio==2}">
+             <a  class="yiji">教师管理</a>
+             <ul>
+                 <li><a th:href="@{/teacherindex}" target= "frame">管理</a></li>
+             </ul>
+             </div>
+         </li>
+         <li class="nav-item">
+             <a  class="yiji">系部管理</a>
+             <ul>
+                 <li><a th:href="@{/departmentindex}" target= "frame">系部管理</a></li>
+             </ul>
+         </li>
+     </ul>
+
+    </div>
+    <div id="right" style="float: left" >
+        <iframe src="index" style="width: 100%;height: 100%;" frameborder="1" scrolling="no" name="frame"></iframe>
+    </div>
+
+</div>
+</body>
+</html>

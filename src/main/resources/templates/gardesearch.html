@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/bootstrap.css" th:href="@{../css/bootstrap.css}" rel="stylesheet">
+    <script th:src="@{../js/jquery-1.11.0.js}"></script>
+    <script th:src="@{../js/bootstrap.js}"></script>
+
+</head>
+<body>
+<table class="table" border="1">
+
+    <thead>
+    <tr>
+         <th>学号</th><th>姓名</th> <th>课程</th><th>成绩</th><th>年份</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="success" th:each="grade:${gradeModel.list}">
+        <td class="active" th:text="${grade.student_name.student_id}" ></td>
+        <td class="active" th:text="${grade.student_name.student_name}" ></td>
+        <td class="active" th:text="${grade.kc_name.kc_name}"></td>
+        <td class="active" th:text="${grade.grade}"></td>
+        <td class="active" th:text="${grade.year}"></td>
+
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

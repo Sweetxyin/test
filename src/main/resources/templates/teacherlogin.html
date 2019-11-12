@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-1.11.0.js"></script>
+    <style>
+        table{
+            width:600px;
+            height:500px;
+            text-align: center;
+            margin: auto;
+        }
+        body{
+            text-align: center;
+        }
+        button{
+            background-color: #7FFFD4;
+            color: antiquewhite;
+            width: 80px;
+            height: 50px;
+            border-radius: 10px;
+            font-size: 26px;
+
+        }
+    </style>
+
+</head>
+<body>
+<form id="xslogin" th:action="@{/student/doTeacherLogin}" method="post">
+    <table>
+        <tr>
+            <td colspan="2">
+                <h1>教师登录</h1>
+            </td>
+        </tr>
+        <tr style="margin-top: -50px;">
+            <td>
+                <h2 style="float:right; ">请输入姓名：</h2>
+            </td>   <td>
+            <input id="xm" type="text" name="teacher_name" style="float: left">
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <h2 style="float:right;">请输入密码：</h2>
+            </td><td>
+            <input id="xh" type="password" name="password" style="float: left">
+        </td>
+        </tr>
+        <tr >
+            <td colspan="2">
+                <button type="submit">登录</button>
+            </td>
+        </tr>
+
+
+
+    </table>
+</form>
+
+
+</body>
+</html>
